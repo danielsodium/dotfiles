@@ -14,18 +14,6 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango: Cascadia Code 13
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -36,14 +24,14 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Screen Brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10% # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%- # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5% # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%- # decrease screen brightness
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -53,7 +41,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -154,6 +142,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+exec_always xrandr --output eDP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-1-0 --off --output DP-1-1 --off --output DP-1-2 --off --output DP-1-3 --off --output HDMI-1-0 --mode 1920x1080 --pos 2560x69 --rotate normal
+
 assign [class="firefox"] $ws2
 
 
@@ -163,6 +153,15 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -196,28 +195,29 @@ gaps inner 6
 
 hide_edge_borders both
 
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-set $lightgray #bdae93
+set $bg #1a1b26
+set $red #f7768e
+set $green #9ece6a
+set $yellow #e0af68
+set $blue #7aa2f7
+set $purple #ad8ee6
+set $aqua #449dab
+set $gray #444b6a
+set $darkgray #32344a
+set $lightgray #787c99
 
 # class                 border|backgr|text|indicator|child_border
-client.focused          $lightgray $lightgray $bg $bg $darkgray
+client.unfocused        $bg $darkgray $lightgray $bg $darkgray
 client.focused_inactive $darkgray $darkgray $lightgray $bg $darkgray
-client.unfocused        $darkgray $darkgray $lightgray $bg $darkgray
+client.focused          $darkgray $bg $lightgray $bg $darkgray
 client.urgent           $red $red $white $bg $red
 
-for_window [class="^.*"] border pixel 1
+# for_window [class="^.*"] border pixel 1
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/bg.jpg
+exec_always --no-startup-id feh --bg-fill --no-xinerama ~/Pictures/bg.jpg
 exec_always --no-startup-id xrdb -merge ~/.config/.Xresources
+exec_always --no-startup-id picom
 
 # Remap for media and esc
 exec_always --no-startup-id setxkbmap -option caps:escape
@@ -227,8 +227,7 @@ bindsym Prior exec --no-startup-id playerctl next
 bindsym Next exec --no-startup-id playerctl previous 
 
 # Touchpad more sensitive and add tap
-exec_always --no-startup-id xinput --set-prop 11 360 1
-exec_always --no-startup-id xinput --set-prop 11 362 0 
-exec_always --no-startup-id xinput --set-prop 11 342 0.5
+exec_always --no-startup-id xinput --set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput --set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Tapping Drag Enabled" 0 
+exec_always --no-startup-id xinput --set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Accel Speed" 0.5
 
-exec_always --no-startup-id sudo systemctl start spotifyd.service

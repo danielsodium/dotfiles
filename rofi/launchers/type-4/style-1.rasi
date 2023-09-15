@@ -64,9 +64,9 @@ window {
     /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
-    padding:                     0px;
+    padding:                     5px;
     border:                      1px solid;
-    border-radius:               0px;
+    border-radius:               10px;
     border-color:                @border-colour;
     cursor:                      "default";
     background-color:            @background-colour;
