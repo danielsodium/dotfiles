@@ -1,0 +1,16 @@
+width = 30%
+height = 30%
+border-width = 0
+outline-width = 0
+padding-top = 5%
+padding-right = 3%
+padding-left = 3%
+num-results = 6
+font = /usr/share/fonts/TTF/JetBrainsMonoNerdFont-Medium.ttf
+font-size = 14
+text-color = #b4befe
+prompt-color = #b4befe
+selection-color = #FFFFFF
+background-color = #1e1e2ecc
+border-color = #b4befe
+corner-radius = 10

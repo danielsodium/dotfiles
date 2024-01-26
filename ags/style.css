@@ -1,0 +1,41 @@
+window.bar {
+    background-color: rgba(30, 30, 46, 0.9);
+    color: @theme_fg_color;
+}
+
+button {
+    background: rgba(0,0,0,0);
+}
+
+.clock {
+    margin: 0px;
+    padding:0px;
+    padding-top: 20px;
+    border: 0px;
+    padding-bottom: 20px;
+}
+
+.workspaces {
+    margin-top: 10px;
+    margin-right: 2px;
+}
+
+.battery {
+    margin-bottom: 2px;
+}
+
+.message {
+    font-size: 48pt;
+    margin-left: 70px;
+    margin-bottom: 10px;
+}
+
+.dashboard {
+    margin: 20px;
+}
+
+.volume, .brightness {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
