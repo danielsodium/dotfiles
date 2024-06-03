@@ -14,6 +14,9 @@ let mapleader =" "
 nnoremap <Leader>f :Files <Return>
 nnoremap <Leader>t :vert term <Return>
 nnoremap <Leader>s :UltiSnipsEdit <Return>
+nnoremap <Leader>l <C-w>l <Return>
+nnoremap <Leader>h <C-w>h <Return>
+nnoremap <Leader>d :Files vert <Return>
 
 call plug#begin()
 
@@ -26,6 +29,6 @@ let g:UltiSnipsEditSplit = 'vertical'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let g:fzf_action = { 'enter': 'tab split' }
+let g:fzf_action = { 'enter': 'vsplit' }
 
 call plug#end()
