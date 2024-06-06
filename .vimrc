@@ -4,11 +4,14 @@ set shiftwidth  =4
 set expandtab
 set autoindent
 set cindent
+set splitright
 
 set number
 hi LineNr ctermfg=blue
 hi TabLineFill term=bold cterm=bold ctermbg=0
+highlight VertSplit cterm=NONE
 syntax on
+set background=dark
 
 let mapleader =" "
 nnoremap <Leader>f :Files <Return>
@@ -21,7 +24,7 @@ nnoremap <Leader>d :Files vert <Return>
 call plug#begin()
 
 Plug 'sirver/ultisnips'
-let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsExpandTrigger = '<space>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsEditSplit = 'vertical'
