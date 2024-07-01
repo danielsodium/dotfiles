@@ -1,0 +1,93 @@
+window.bar {
+    color: @theme_fg_color;
+    background-color: #000000;
+    border-radius: 8px;
+}
+
+button {
+    min-width: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: transparent;
+}
+
+button:active {
+}
+
+button:hover {
+}
+
+label {
+    font-weight: bold;
+}
+
+.workspaces button.focused {
+    border-bottom: 3px solid @theme_selected_bg_color;
+}
+
+.client-title {
+    color: @theme_selected_bg_color;
+}
+
+.notification {
+    color: yellow;
+}
+
+levelbar block,
+highlight {
+    min-height: 10px;
+}
+
+.search {
+    margin-right: 10px;
+}
+
+.pipe {
+    margin-left: 10px;
+    color: #787878;
+}
+
+.clock {
+    margin-left: 10px;
+}
+
+.battery {
+    margin-left: 10px;
+}
+
+.volume {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.syswindow {
+    background-color: #000000;
+    padding: 20px;
+    min-width: 200px;
+    border-radius: 8px;
+}
+
+.tab {
+    padding: 7px;
+}
+
+.spotlight-box {
+    background-color: #000000;
+}
+
+.spotlight-icon {
+    margin: 0px 10px 0px 10px;
+}
+
+.spotlight-entry {
+    background-color: #000000;
+    border: 0px;
+    margin-bottom: 2px;
+    padding: 0px 10px 0px 10px;
+}
+
+
+
+
+
+
