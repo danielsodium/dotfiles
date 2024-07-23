@@ -1,0 +1,29 @@
+box.dash {
+    background-color: #000000;
+    min-width: 300px;
+    min-height: 500px;
+    border-radius : 0px 8px 8px 0px;
+    padding: 20px;
+}
+
+box.dash-widget {
+    background-color: #222222;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.dash-title {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dash-inner-widget {
+    background-color: #333333;
+    padding: 10px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 8px;
+    min-width: 250px
+}

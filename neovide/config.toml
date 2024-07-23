@@ -1,6 +1,6 @@
 [font]
     normal = ["JetBrainsMono Nerd Font"]
-    size = 10.0
+    size = 12.0
 
 fork = false
 frame = "full"

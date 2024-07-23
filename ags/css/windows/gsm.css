@@ -1,0 +1,9 @@
+.gsm-prompt, entry.gsm {
+    font-family: JetBrainsMono NFM;
+}
+
+entry.gsm {
+    box-shadow: none;
+    border: none;
+ 
+}

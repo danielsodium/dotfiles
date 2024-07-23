@@ -1,0 +1,17 @@
+
+.clock-label {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.dash-clock {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.clock-widget {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+

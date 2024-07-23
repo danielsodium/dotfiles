@@ -1,0 +1,21 @@
+.hyprland-button {
+    background-color: #000000;
+    border: 2px solid;
+    border-color: #FFFFFF;
+    font-size: 0.2em;
+    padding: 0px;
+    min-width: 4em;
+    min-height: 1em;
+    margin: 0px 2px 0px 2px;
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+.hyprland-button.active {
+    min-width: 8em;
+}
+
+.hyprland-button-box {
+    padding: 12px 0px 12px 0px;
+}

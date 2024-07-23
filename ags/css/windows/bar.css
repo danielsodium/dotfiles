@@ -1,0 +1,16 @@
+
+window.bar {
+    background-color: #000000;
+    border-radius: 8px 8px 0px 0px;
+}
+
+box.bar {
+    padding: 0px 0px 0px 0px;
+    min-height: 40px;
+}
+
+.widget {
+    border-radius: 5px;
+    padding: 0px 20px 0px 20px;
+}
+

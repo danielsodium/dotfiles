@@ -11,6 +11,9 @@ alias grep='grep --color=auto'
 # Clear the kitty scroll buffer
 alias clear='printf "\E[H\E[3J"'
 alias :q='exit'
+function nv() { 
+    neovide $1 & disown 
+}
 
 # fzf completion
 source /usr/share/fzf/key-bindings.bash
@@ -24,5 +27,8 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 export PATH=~/depot_tools:$PATH
 
 # PS1='[\u@\h \W]\$ '
-export PS1="\e[0;36m\u@\h \e[0;34m\W \e[0;32m\$ \e[m"
-fastfetch
+export PS1="\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[34m\]\W\[\e[m\] \[\e[32m\]\\$\[\e[m\] "
+
+if [[ $(echo $TERM) == "xterm-kitty" ]]; then
+    fastfetch
+fi

@@ -1,0 +1,12 @@
+@import url("./windows/bar.css");
+@import url("./widgets/hyprland.css");
+@import url("./widgets/clock.css");
+@import url("./widgets/battery.css");
+@import url("./widgets/wifi.css");
+@import url("./widgets/volume.css");
+@import url("./widgets/tray.css");
+@import url("./widgets/system.css");
+@import url("./widgets/media.css");
+@import url("./windows/launcher.css");
+@import url("./windows/gsm.css");
+@import url("./windows/dash.css");

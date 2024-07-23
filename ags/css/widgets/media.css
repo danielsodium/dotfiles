@@ -1,0 +1,23 @@
+.dash-media {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-width: 280px;
+    min-height: 40px;
+}
+
+.media-label {
+    font-weight: bold;
+    margin: 5px;
+}
+
+.media-button {
+    background-color: transparent;
+}
+
+.media-cut {
+}

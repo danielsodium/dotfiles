@@ -1,0 +1,14 @@
+box.launcher {
+    background-color: #000000;
+    min-width: 340px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 8px;
+}
+
+entry.launcher {
+    box-shadow: none;
+    border: none;
+    font-size: 14pt;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
