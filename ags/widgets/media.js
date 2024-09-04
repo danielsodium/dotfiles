@@ -79,6 +79,7 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),url('$
 )
 
 const MediaDash = Widget.Box({
+    vertical: true,
     children: mpris.bind('players').as(p => p.map(Player))
 })
 

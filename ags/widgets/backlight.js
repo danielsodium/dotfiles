@@ -21,13 +21,17 @@ const BacklightDash = Widget.Box({
 },
     label,
     Widget.Box({
+        vertical: true,
+        hpack: "start",
         class_name: "dash-inner-widget"
     },
-        Widget.Icon({
-            class_name: "system-icon",
-            icon: "display-brightness-symbolic"
-        }),
-        slider
+        Widget.Box({},
+            Widget.Icon({
+                class_name: "system-icon",
+                icon: "display-brightness-symbolic"
+            }),
+            slider
+        )
     )
 );
 

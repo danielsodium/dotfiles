@@ -1,3 +1,6 @@
+/* Theme */
+@import url("./colors.css");
+
 @import url("./windows/bar.css");
 @import url("./widgets/hyprland.css");
 @import url("./widgets/clock.css");
@@ -10,3 +13,17 @@
 @import url("./windows/launcher.css");
 @import url("./windows/gsm.css");
 @import url("./windows/dash.css");
+
+
+/* Testing */
+slider {
+  background-image: none;
+}
+slider:hover {
+  background-image: none;
+  background-color: transparent;
+}
+
+highlight {
+  background-image: image(@fg);
+}

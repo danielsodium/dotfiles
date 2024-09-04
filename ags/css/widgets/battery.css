@@ -1,10 +1,11 @@
 
 .battery-profiles {
-    margin-top: 10px;
+    color: @fg;
+    margin: 10px 10px 0px 10px;
 }
 
 .button-active {
-    background-color: #666666;
+    background-color: @bg2;
 }
 
 .profile-button {

@@ -1,7 +1,7 @@
 .hyprland-button {
-    background-color: #000000;
+    background-color: @bg;
     border: 2px solid;
-    border-color: #FFFFFF;
+    border-color: @fg;
     font-size: 0.2em;
     padding: 0px;
     min-width: 4em;

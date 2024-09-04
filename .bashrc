@@ -32,3 +32,9 @@ export PS1="\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[34m
 if [[ $(echo $TERM) == "xterm-kitty" ]]; then
     fastfetch
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/daniel/google-cloud-sdk/path.bash.inc' ]; then . '/home/daniel/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/daniel/google-cloud-sdk/completion.bash.inc' ]; then . '/home/daniel/google-cloud-sdk/completion.bash.inc'; fi

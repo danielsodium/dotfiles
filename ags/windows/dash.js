@@ -8,7 +8,8 @@ import { MediaDash } from "../widgets/media.js";
 const DashWidgets = Widget.Box({
     class_name: "dash",
     vertical: true,
-    vpack: "start",
+    vpack: "fill",
+
 },
     Day,
 
@@ -24,7 +25,7 @@ const Dash = Widget.Window({
     class_name: "dash",
     monitor : 0,
     anchor: ["left", "top", "bottom"],
-    layer: "overlay",
+    layer: "top",
     visible: false,
     margins: [5, 0, 5, 0],
     child: DashWidgets,

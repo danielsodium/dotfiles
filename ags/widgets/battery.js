@@ -21,8 +21,12 @@ const BatteryLabel = Widget.CenterBox({
         hpack: "end"
     },
         Widget.Label({
-            label: battery.bind("percent").as(p => `${Math.floor(p)}%  `)
+            label: battery.bind("percent").as(p => `${Math.floor(p)}% `)
         }),
+        Widget.Label({
+            label: battery.bind("time_remaining").as(s => `(${new Date(s * 1000).toISOString().substring(11, 16)})  `)
+        }),
+
         Widget.Icon({
             icon: icon
         }),

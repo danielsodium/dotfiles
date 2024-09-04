@@ -1,6 +1,6 @@
 
 window.bar {
-    background-color: #000000;
+    background-color: @bg;
     border-radius: 8px 8px 0px 0px;
 }
 

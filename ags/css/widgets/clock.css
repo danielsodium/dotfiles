@@ -1,15 +1,18 @@
 
 .clock-label {
+    color: @fg;
     font-size: 12pt;
     font-weight: bold;
 }
 
 .dash-clock {
+    color: @fg;
     font-size: 18pt;
     font-weight: bold;
 }
 
 .clock-widget {
+    color: @fg;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
