@@ -1,0 +1,53 @@
+scale {
+    margin: -10px 0px -10px 0px;
+}
+/* Style for the GtkScale's track (background) */
+slider {
+    background-color: transparent; /* Light grey track */
+    border-radius: 10px;
+	background-image: none;
+	color: transparent;
+    box-shadow: none;
+}
+
+highlight {
+
+    background-image: none;
+    background-color: #A7C080;
+}
+
+scale, slider, trough, contents, highlight {
+	border-radius: 5px;
+	min-height: 25px;
+}
+
+.panel, .panel-strip {
+    padding: 0px;
+}
+
+.sliders {
+    padding: 20px 0px 20px 0px;
+}
+
+.sliders icon {
+    font-size: 1.5em;
+}
+
+.panel-button {
+    min-width: 50px;
+    min-height: 50px;
+    padding: 0px;
+}
+
+.panel-button icon {
+    font-size: 1.5em;
+    margin: 0px;
+}
+
+.panel-button.on {
+    background-color: #A7C080;
+}
+.panel-button.on icon {
+    color: #7a8478;
+
+}

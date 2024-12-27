@@ -1,0 +1,45 @@
+
+window.Bar {
+    border-radius: 5px;
+    border: none;
+}
+
+box.Bar {
+    background-color: #2D353B;
+    border-radius: 5px;
+}
+
+box.Bar button {
+    background-color: #2D353B;
+    background-image: none;
+    border-radius: 5px;
+}
+
+box.Bar button:hover {
+    background-image: none;
+}
+
+.Workspaces {
+    padding: 14px;
+}
+.ws {
+    margin: 2px 0px 2px 0px;
+    border-radius: 4px;
+    transition: min-height 0.2s ease-in-out;
+    background-color: #A7C080;
+}
+
+.ws.focused {
+    min-height: 25px;
+}
+
+.ws.unfocused {
+    min-height: 15px;
+}
+
+.ws.focused:hover {
+    min-height: 40px;
+}
+.ws.unfocused:hover {
+    min-height: 20px;
+}
