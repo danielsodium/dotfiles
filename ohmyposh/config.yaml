@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+version: 3
+final_space: true
+
+blocks:
+  - type: rprompt
+    alignment: right
+    segments: 
+      - type: path
+        style: plain
+        foreground: green
+        background: none
+        properties:
+          style: folder
+      - type: time
+        style: plain
+        foreground: white
+        properties:
+          time_format: '03:04:05'
+  - type: prompt
+    alignment: left
+    background: transparent
+    foreground: white
+    segments:
+      - type: text
+        style: plain
+        template: ">"

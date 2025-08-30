@@ -1,6 +1,9 @@
 *
-!kitty/
-!tmux/
-!hypr/
+
+!.gitignore
+
 !ohmyposh/
 !nvim/
+!tmux/tmux.conf
+!kitty/
+!hypr/
