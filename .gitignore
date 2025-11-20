@@ -1,11 +1,6 @@
-discord
-dconf
-gtk-3.0
-kde.org
-pulse
-spotify
-systemd
-chromium
-JetBrains
-Google
-Android Open Source Project
+dconf/
+GIMP/
+procps/
+spotify/
+s-tui
+
