@@ -8,5 +8,5 @@ Screenshot coming soon.
 - WM: Hyprland (Monitors), Sway (Laptop)
 - Desktop Widgets: A widget system I made in C with Cairo and Pango for Wayland
 - Terminal: Foot
-- Editor: Neovim
+- Editor: Neovim (mostly stock kickstart.nvim)
 
