@@ -1,7 +1,6 @@
 # Danielsodium's Dotfiles
 
-My configuration for desktop linux.
-Screenshot coming soon.
+![screenshot](screenshot.png)
 
 ## My Setup
 - OS: Arch Linux
