@@ -418,7 +418,7 @@ require('lazy').setup({
         -- pickers = {}
         pickers = {
           find_files = {
-            theme = 'cursor',
+            theme = 'dropdown',
           },
         },
         extensions = {
