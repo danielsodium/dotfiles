@@ -2,9 +2,11 @@
 
 My configuration files. There's a good chance this won't work on anyone else's machine as it doesn't work on my machine half the time.
 
+I have a branch for each time I wipe my linux distribution and start my configuration over.
+
 ## My Setup
 - OS: EndeavourOS
-    - I use this primarily because I'm used to Arch but I don't like having to figure out what is wrong with my nvidia drivers once a week, nvidia-inst is so nice
+    - I use this primarily because I'm used to Arch but I don't like having to figure out what is wrong with my nvidia drivers once a week, nvidia-inst is nice
 - WM: Sway
 - Desktop Bar: Sway Bar
     - Why waybar when swaybar do trick?
