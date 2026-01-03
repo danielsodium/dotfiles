@@ -3,4 +3,11 @@ GIMP/
 procps/
 spotify/
 s-tui
+chromium/
+gtk-3.0/
+gtk-4.0/
+nwg-look/
+pulse/
+systemd/
+xsettingsd/
 

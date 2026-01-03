@@ -1,0 +1,87 @@
+#!/bin/bash
+
+TMP_ART="/tmp/current_album_art.jpg"
+DEFAULT_SIZE="30"
+SIZE=${1:-$DEFAULT_SIZE}
+SONG_NUM=0
+
+BOLD="\e[1m"
+DIM="\e[2m"
+GREEN="\e[32m"
+BLUE="\e[34m"
+RESET="\e[0m"
+
+START_TIME=$(date +%s)
+LAST_URL=""
+
+truncate_text() {
+    local text="$1"
+    local max="$SIZE"
+    local current_display="$text"
+
+    while [ "$(printf "%s" "$current_display" | wc -L)" -gt "$max" ]; do
+        current_display="${current_display%?}"
+    done
+
+    if [ "$current_display" != "$text" ]; then
+        echo "${current_display%?}"
+    else
+        echo "$text"
+    fi
+}
+
+trap 'rm -f "$TMP_ART"; exit' INT TERM EXIT
+
+echo -e "${DIM}Waiting for player...${RESET}"
+
+playerctl metadata --format "{{ mpris:artUrl }}|{{ title }}|{{ artist }}|{{ album }}" --follow | while IFS='|' read -r url title artist album; do
+
+	SONG_NUM=$((SONG_NUM + 1))
+    clear
+    echo ""
+
+    if [ "$url" != "$LAST_URL" ]; then
+        if [ -n "$url" ]; then
+            if [[ "$url" == file://* ]]; then
+                cp "${url#file://}" "$TMP_ART" 2>/dev/null
+            else
+                curl -s -o "$TMP_ART" "$url"
+            fi
+        else
+            rm -f "$TMP_ART"
+        fi
+        LAST_URL="$url"
+    fi
+
+    if [ -f "$TMP_ART" ]; then
+        viu -t -w "$SIZE" "$TMP_ART"
+    else
+        echo -e "${DIM}[No Artwork]${RESET}"
+    fi
+
+    echo ""
+    echo -e "${BOLD}$(truncate_text "$title")${RESET}"
+    echo -e "${BLUE}$(truncate_text "$artist")${RESET}"
+    echo -e "${DIM}$(truncate_text "$album")${RESET}"
+
+    echo ""
+    echo "--------------------"
+    echo ""
+
+    ELAPSED=$(( $(date +%s) - START_TIME ))
+    HOUR=$(( ELAPSED / 3600 ))
+    MIN=$(( (ELAPSED % 3600) / 60 ))
+
+	LIFETIME=$(( 29000 * 24 * 60 * 60))
+	PERCENT=$(awk -v e="$ELAPSED" -v l="$LIFETIME" 'BEGIN { printf "%.7f", (e/l)*100 }')
+
+    TIME=$(printf '%d:%02d' "$HOUR" "$MIN")
+	SONG_WIDTH=$(($SIZE - 6))
+    TIME_WIDTH=$(($SIZE - 8))
+    PERCENT_WIDTH=$(($SIZE - 10))
+
+	printf 'Songs %b%*s%b\n' "$GREEN" "$SONG_WIDTH" "$SONG_NUM" "$RESET"
+	printf 'Elapsed %b%*s%b\n' "$GREEN" "$TIME_WIDTH" "$TIME" "$RESET"
+	printf 'Lifetime %b%*s%%%b\n' "$GREEN" "$PERCENT_WIDTH" "$PERCENT" "$RESET"
+
+done
