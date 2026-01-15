@@ -16,7 +16,7 @@ LAST_URL=""
 
 truncate_text() {
     local text="$1"
-    local max="$SIZE"
+    local max=$(($SIZE + 1))
     local current_display="$text"
 
     while [ "$(printf "%s" "$current_display" | wc -L)" -gt "$max" ]; do

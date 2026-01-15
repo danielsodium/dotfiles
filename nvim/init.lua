@@ -9,12 +9,12 @@ vim.g.have_nerd_font = true
 local set = vim.opt
 set.mouse = "a"
 set.showmode = false
-vim.o.tabstop = 4
-vim.bo.tabstop = 4
-vim.o.softtabstop = 4
+vim.o.tabstop = 2
+vim.bo.tabstop = 2
+vim.o.softtabstop = 2
 vim.o.shiftround = true
-vim.o.shiftwidth = 4
-vim.bo.shiftwidth = 4
+vim.o.shiftwidth = 2
+vim.bo.shiftwidth = 2
 set.breakindent = true
 set.undofile = true
 set.ignorecase = true
@@ -31,12 +31,12 @@ set.confirm = true
 set.number = true
 
 if vim.g.neovide then
-  vim.o.guifont = "JetbrainsMono Nerd Font:h20"
-  vim.g.neovide_refresh_rate = 60
-  vim.g.neovide_padding_top = 0
-  vim.g.neovide_padding_bottom = 0
-  vim.g.neovide_padding_right = 0
-  vim.g.neovide_padding_left = 0
+	vim.o.guifont = "JetbrainsMono Nerd Font:h20"
+	vim.g.neovide_refresh_rate = 60
+	vim.g.neovide_padding_top = 0
+	vim.g.neovide_padding_bottom = 0
+	vim.g.neovide_padding_right = 0
+	vim.g.neovide_padding_left = 0
 end
 
 -- clear search highlights
@@ -71,11 +71,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- My custom commands!
 -- playerctl
 vim.keymap.set("n", "<space>sk", function()
-  vim.fn.jobstart({"playerctl", "previous"})
+	vim.fn.jobstart({ "playerctl", "previous" })
 end, { desc = "Playerctl back" })
 vim.keymap.set("n", "<space>sj", function()
-  vim.fn.jobstart({"playerctl", "next"})
+	vim.fn.jobstart({ "playerctl", "next" })
 end, { desc = "Playerctl skip" })
 vim.keymap.set("n", "<space>s<space>", function()
-  vim.fn.jobstart({"playerctl", "play-pause"})
-end, { desc = "Playerctl toggle play/pause"})
+	vim.fn.jobstart({ "playerctl", "play-pause" })
+end, { desc = "Playerctl toggle play/pause" })

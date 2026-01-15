@@ -22,11 +22,11 @@ while true; do
 
     # --- 1. Playerctl (Music) ---
     # Get status (Playing/Paused)
-    PLAYER_STATUS=$(playerctl status 2>/dev/null)
+    PLAYER_STATUS=$(playerctl status --player=spotify 2>/dev/null)
     
     if [ "$PLAYER_STATUS" = "Playing" ]; then
         # Format: SONG_NAME - ARTIST
-        MEDIA_INFO=$(playerctl metadata --format "{{ title }} - {{ artist }}" 2>/dev/null)
+        MEDIA_INFO=$(playerctl metadata --player=spotify --format "{{ title }} - {{ artist }}" 2>/dev/null)
         # Truncate if too long (optional, max 40 chars)
         if [ ${#MEDIA_INFO} -gt 40 ]; then
             MEDIA_INFO="${MEDIA_INFO:0:40}..."

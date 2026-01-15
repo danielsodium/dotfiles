@@ -1,17 +1,7 @@
-vim.keymap.set("n", "<space>tm", function()
-  vim.cmd.vnew()
-  vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0,15)
-  vim.cmd.term()
-  vim.defer_fn(function()
-	vim.fn.chansend(vim.bo.channel, { "make\r\n" })
-  end, 100)
-  vim.cmd.startinsert()
-end)
-
 local state = {
   buf = -1,
   win = -1,
+  last_pane = -1;
 }
 
 local function create_window()
@@ -29,8 +19,16 @@ local function toggle_terminal()
   if vim.api.nvim_win_is_valid(state.win) then
     vim.api.nvim_win_hide(state.win)
     state.win = -1
+
+	if vim.api.nvim_win_is_valid(state.last_editor_win) then
+      vim.api.nvim_set_current_win(state.last_editor_win)
+    end
+
     return true
   end
+
+  state.last_editor_win = vim.api.nvim_get_current_win()
+
   return false
 end
 
@@ -61,10 +59,16 @@ local function build_term()
   local state_buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_win_set_buf(state.win, state_buf)
 
-  vim.cmd.term()
-  vim.defer_fn(function()
-	vim.fn.chansend(vim.bo.channel, { "make\r\n" })
-  end, 100)
+  vim.fn.termopen("make", {
+    on_exit = function(_, exit_code)
+      if exit_code == 0 then
+        vim.api.nvim_win_close(state.win, true)
+		if vim.api.nvim_win_is_valid(state.last_editor_win) then
+		  vim.api.nvim_set_current_win(state.last_editor_win)
+		end
+      end
+    end
+  })
   vim.cmd.startinsert()
 end
 
@@ -90,7 +94,6 @@ local function stupid_term()
   vim.wo[stupid_window].signcolumn = "no"
   vim.wo[stupid_window].winfixwidth = true
 
-  local state_buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_win_set_buf(stupid_window, buf)
 
   vim.cmd.term()
@@ -102,6 +105,6 @@ local function stupid_term()
 end
 
 -- Keybinding
-vim.keymap.set({'n', 't'}, '<space>st', persistent_term, { desc = "Toggle persistent terminal" })
-vim.keymap.set({'n', 't'}, '<space>rt', build_term, { desc = "Toggle build terminal" })
-vim.keymap.set({'n', 't'}, '<space>tt', stupid_term, { desc = "stupid" })
+vim.keymap.set({'n', 't'}, '<space>tt', persistent_term, { desc = "Toggle persistent terminal" })
+vim.keymap.set({'n', 't'}, '<space>r', build_term, { desc = "Toggle build terminal" })
+vim.keymap.set({'n', 't'}, '<space>ts', stupid_term, { desc = "stupid" })
